@@ -1,0 +1,236 @@
+/* ===============================
+   RESET & BASE
+=============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #f5f7fa;
+  line-height: 1.6;
+}
+
+/* ===============================
+   HEADER / HERO
+=============================== */
+header.hero {
+  background: linear-gradient(120deg, #0078d7, #4a90e2);
+  color: #fff;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1 1 400px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  animation: fadeIn 1.3s ease-in-out;
+}
+
+.hero-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.hero-image img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   MAIN SECTIONS
+=============================== */
+main {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+main section {
+  margin-bottom: 3rem;
+}
+
+main h2 {
+  font-size: 1.8rem;
+  color: #0078d7;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #0078d7;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* ===============================
+   COMPÉTENCES
+=============================== */
+section p {
+  margin-bottom: 1rem;
+}
+
+/* ===============================
+   PROJETS
+=============================== */
+/* ===============================
+   PROJETS AVEC IMAGES
+=============================== */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project img {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.project-text {
+  flex: 1;
+}
+
+.project-text h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.project-text p {
+  color: #555;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ===============================
+   FOOTER
+=============================== */
+footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+footer h2 {
+  color: #4a90e2;
+  margin-bottom: 1rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li {
+  margin: 0.5rem 0;
+}
+
+footer a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  main {
+    padding: 2rem 1rem;
+  }
+}
+
+/* ===============================
+   ANIMATIONS
+=============================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
