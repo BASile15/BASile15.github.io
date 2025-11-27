@@ -1,0 +1,229 @@
+/* ---------- Timeline Serpent ---------- */
+.timeline-snake {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  z-index: 2;
+}
+
+/* ---------- Item centré ---------- */
+.timeline-item.center {
+  justify-content: center;
+}
+
+.timeline-item.center .timeline-content {
+  max-width: 520px;
+}
+
+/* ---------- Item à gauche ---------- */
+.timeline-item.left {
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+
+.timeline-item.left .timeline-content {
+  max-width: 480px;
+}
+
+/* ---------- Item à droite ---------- */
+.timeline-item.right {
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+
+.timeline-item.right .timeline-content {
+  max-width: 480px;
+}
+
+/* ---------- Contenu des cartes ---------- */
+.timeline-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  border-color: var(--accent);
+}
+
+.timeline-connector-point {
+  display: none;
+}
+
+.timeline-item:hover .timeline-connector-point {
+  transform: scale(1.4);
+}
+
+/* ---------- Position des points ---------- */
+.point-top {
+  top: -9px;
+}
+
+.point-bottom {
+  bottom: -9px;
+}
+
+/* ---------- Points pour items centrés ---------- */
+.timeline-item.center .point-top {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item.center .point-bottom {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item.center:hover .point-top,
+.timeline-item.center:hover .point-bottom {
+  transform: translateX(-50%) scale(1.4);
+}
+
+/* ---------- Points pour items gauche ---------- */
+.timeline-item.left .point-top {
+  right: 50%;
+  margin-right: -9px;
+}
+
+.timeline-item.left .point-bottom {
+  left: 50%;
+  margin-left: -9px;
+}
+
+/* ---------- Points pour items droite ---------- */
+.timeline-item.right .point-top {
+  left: 50%;
+  margin-left: -9px;
+}
+
+.timeline-item.right .point-bottom {
+  right: 50%;
+  margin-right: -9px;
+}
+
+/* ---------- Lignes de connexion SVG ---------- */
+.connector {
+  width: 100%;
+  height: 200px;
+  margin: -30px 0;
+  display: block;
+  z-index: 1;
+}
+
+/* ---------- Style des dates et textes ---------- */
+.timeline-date {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-content h3 {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.timeline-location {
+  color: var(--accent) !important;
+  font-weight: 500;
+  font-size: 1rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.timeline-detail {
+  color: var(--text-light) !important;
+  margin-top: 0.8rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6;
+}
+
+/* ---------- Animation des lignes au chargement ---------- */
+.connector path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease-out forwards;
+  filter: drop-shadow(0 0 8px rgba(244, 162, 97, 0.3));
+}
+
+.connector-1 path {
+  animation-delay: 0.3s;
+}
+
+.connector-2 path {
+  animation-delay: 0.9s;
+}
+
+.connector-3 path {
+  animation-delay: 1.5s;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .timeline-snake {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right,
+  .timeline-item.center {
+    justify-content: flex-start;
+    padding: 0 0 0 3rem;
+    margin: 2rem 0;
+  }
+
+  .timeline-item .timeline-content {
+    max-width: 100%;
+  }
+
+  .timeline-connector-point {
+    display: none;
+  }
+
+  /* ---------- Point unique à gauche sur mobile ---------- */
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    z-index: 4;
+  }
+
+  .connector {
+    display: none;
+  }
+}
